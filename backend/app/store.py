@@ -42,6 +42,7 @@ class Store:
             {"label": "今日新增", "value": sum(int(item["created"]) for item in modules)},
             {"label": "待处理", "value": sum(int(item["pending"]) for item in modules)},
             {"label": "异常量", "value": sum(int(item["abnormal"]) for item in modules)},
+            {"label": "在册台数", "value": len(self.rows("vessel"))},
         ]
         return {"cards": cards, "modules": modules}
 

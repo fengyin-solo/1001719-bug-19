@@ -30,6 +30,12 @@ def list_entries(
     return PageResult(items=items, total=total, page=page, size=size)
 
 
+@router.get("/stats")
+def vessel_stats() -> dict[str, int]:
+    """压力容器在册台数与各状态台数，供运营概览重算。"""
+    return service.stats()
+
+
 @router.get("/{entry_id}", response_model=dict)
 def get_entry(entry_id: int) -> dict:
     """读取单条压力容器明细；不存在时给出可读的错误说明。"""
